@@ -1,0 +1,19 @@
+DATA/apple-6.pgm
+importance: 1.2
+Storing contour pixels needs: 2680 Bytes.
+Delta encoding contour pixels needs: 343 Bytes.
+Storing MAT pixels needs: 1066 Bytes.
+TotalControlNum: 27
+The number of Repeat points is 0
+The output size needs to be subtracted 8 Bytes.
+The size of SMAT file is:  104  Bytes.
+=================
+Average hausdorff: 0.0722114
+Boundary hausdorff-(orig, spline): 
+100
+Boundary hausdorff-(%): 0.276214
+-----------------
+Jaccard index 
+0.000474587
+=================
+MS-SSIM: 

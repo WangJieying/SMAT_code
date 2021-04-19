@@ -1,0 +1,20 @@
+#!/bin/bash
+
+sed -i '1,$ d' ../output.txt 
+######For nested loop#######
+
+for Image in new/*.pgm
+do
+	echo $Image >> ../output.txt
+		
+		####### write to config ######
+		
+		sed -i '21,$ d' ./config.txt
+		echo 'filename = ' $Image >> ./config.txt
+	
+		
+		######## execute skeleton #######
+		./skeletonify config.txt
+		
+done			
+exit 0
