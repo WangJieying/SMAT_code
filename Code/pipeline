@@ -1,0 +1,57 @@
+#!/bin/bash
+
+sed -i '1,$ d' output.txt
+######For nested loop#######
+cd imConvert
+
+for Image in DATA/apple-6.pgm
+do
+echo $Image >> ../output.txt
+
+sz_orig=$(stat -c '%s' $Image)
+
+	for Saliency in 1.2
+	do
+		for hausdorff in 0.002
+		do
+			for merge in 1
+			do
+			for removeRepCR in 0
+			do
+			
+			####### write to config ######
+			sed -i '6,$ d' ./config.txt
+			echo 'filename = ' $Image >> ./config.txt
+			echo 'ssThreshold = ' $Saliency >> ./config.txt
+			echo 'hausdorff = ' $hausdorff >> ./config.txt
+			
+			sed -i '1,$ d' ../imShow/config.txt
+			echo $merge >> ../imShow/config.txt
+			echo $removeRepCR >> ../imShow/config.txt
+			
+			######## execute skeleton #######
+			./skeletonify config.txt
+			cd ../imShow
+
+			sz_out=$(stat -c '%s' output.smat)
+			echo 'The size of SMAT file is: ' $sz_out ' Bytes.' >> ../output.txt
+			./show_skeleton output.smat #This creates a decompressed image, called output.png
+			convert output.png output.pgm
+			cp ControlPoints.txt ../computeError
+			cp BranchSample.txt ../computeError
+			
+			cd ../computeError
+			./skeleton ../imConvert/$Image
+	
+			cd ..  ##Don´t forget!
+			#/usr/local/MATLAB/R2016b/bin/matlab -nosplash -nodesktop -r "msssim('imConvert/$Image','imShow/output.pgm');quit;"
+			cd imConvert
+			
+			done
+			done
+		done	
+			
+	done
+	
+done			
+exit 0
