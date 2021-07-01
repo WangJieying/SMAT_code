@@ -6,11 +6,11 @@ This software package is the technical support for our paper "Spline-based media
 The software needs a C++ compiler, OpenGL, the CUDA, and GLUT to build. 
 Under a Debian based linux they can be installed using the following command.
 
-#install
+#### install
 
 sudo apt-get install cuda zpaq libzstd-dev libsnappy-dev gcc git make cmake libboost-all-dev freeglut3-dev libglew-dev ragel libvala-0.40-dev glmark2 valac liblz4-dev liblzma-dev libbz2-1.0
 
-#to build:
+#### to build:
 
 cd Code/imShow && make
 
@@ -76,38 +76,38 @@ imShow
 ---------
 This program is responsible for decode the SMAT file and then do the reconstruction.
 
-*getAlphaMapOfLayer() - This function draws all disks. The alpha will be 1 at the location that should be drawn, otherwise 0. 
+* getAlphaMapOfLayer() - This function draws all disks. The alpha will be 1 at the location that should be drawn, otherwise 0. 
 
 
 # 4. Other remarks
 
 As said before, config.txt is a configuration file. The following explains all parameters:
 
-*outputFile 
+#### outputFile 
 
 This parameter indicates where to put the output file, i.e., the .smat file.
 
-*SkeletonThreshold 
+#### SkeletonThreshold 
 
 This parameter is a support for the saliency skeleton. After the saliency skeleton thresholding, there will be a collection of disconnected, skeletal components. Only the longest 'core' component/fragment should be preserved. So this parameter is used to filter those small disconnected skeleton branches. See details in the paper "Feature Preserving Smoothing of Shapes using Saliency Skeletons".
 
-*Imp
+#### Imp
 
 Threshold for Importance metric. See details in the paper "Feature Preserving Smoothing of Shapes using Saliency Skeletons". Set it to 3 is a good one. 
 
-*removeRepCR
+#### removeRepCR
 
 It is generally set to 0, means do not remove repeated point, and use 8-bit encoding scheme.
 
-*filename
+#### filename
 
 Input image, must be PGM file.
 
-*ssThreshold
+#### ssThreshold
 
 An important parameter. It represents saliency skeleton threshold. 0.2-2 should be a good range.
 
-*hausdorff
+#### hausdorff
 
 Another important parameter. It tells how accurately B-splines fit medial branches. The smaller this error, the higher accuracy. 0.001 - 0.005 should be a good range.
 
