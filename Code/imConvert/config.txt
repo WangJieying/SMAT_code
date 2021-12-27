@@ -1,0 +1,8 @@
+outputFile = ../imShow/output.smat
+SkeletonThreshold = 2
+Imp =  3
+removeRepCR =  0
+#####The following are frequently set#####
+filename =  DATA/apple-6.pgm
+ssThreshold =  1.2
+hausdorff =  0.002
