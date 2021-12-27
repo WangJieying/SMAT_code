@@ -20,7 +20,7 @@ sz_orig=$(stat -c '%s' $Image)
 			do
 			
 			####### write to config ######
-			sed -i '6,$ d' ./config.txt
+			sed -i '5,$ d' ./config.txt
 			echo 'filename = ' $Image >> ./config.txt
 			echo 'ssThreshold = ' $Saliency >> ./config.txt
 			echo 'hausdorff = ' $hausdorff >> ./config.txt
